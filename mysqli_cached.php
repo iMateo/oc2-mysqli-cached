@@ -46,25 +46,27 @@ final class MySQLi_Cached {
                         if ($resetflag <= $query->time) {
                             $this->cachedquery = $query;
                             return($query);
-                        };
+                        }
                        else {
                            $this->cachedquery = $query;
                            return($query);
                             
-                        };                        
-                    };
-                };
-            };
+                        }                        
+                    }
+                }
+            }
             $resource = $this->link->query($sql);
             if ($resource) {
                 if (is_resource($resource)) {
                     $i = 0;
                     $data = array;
                     while ($result = $query->fetch_accoc($resource)) {
-                        $data = 
+                        $data[$i] = $result;
+                        $i++;
                     }
-                };
-            };
+                    
+                }
+            }
         }
 
 
